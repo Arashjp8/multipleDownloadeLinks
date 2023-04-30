@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-// ? map trough them when the button clicked
-
 function App() {
   let allAnchorTags = [];
 
