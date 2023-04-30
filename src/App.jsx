@@ -1,13 +1,11 @@
-import { useState, createRef, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
-import anchorFinder from "./utils/useElementFinder";
 
 // ? map trough them when the button clicked
 
 function App() {
   let allAnchorTags = [];
+
   useEffect(() => {
     allAnchorTags = Array.from(document.querySelectorAll("a"));
     console.log(allAnchorTags, typeof allAnchorTags);
@@ -16,17 +14,18 @@ function App() {
   const handleClick = (e) => {
     e.preventDefault();
     for (let i = 0; i < allAnchorTags.length; i++) {
-      allAnchorTags[i].addEventListener("click", () => {
-        console.log(allAnchorTags[i]);
-      });
-      allAnchorTags[i].click();
+      window.open(allAnchorTags[i].href);
     }
   };
 
-  const anchorTag = createRef();
-
   return (
     <>
+      <h1 className="text-warning p-5">
+        The pop-up window blocker in your browser should be turned off in order
+        for it to work.
+      </h1>
+
+      {/* leave your anchor tags here  */}
       <div className="text-center my-1">
         <a
           className="display-inline-block px-3 py-1 br-5px bg1"
