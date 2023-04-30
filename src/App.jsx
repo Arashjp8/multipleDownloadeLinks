@@ -7,35 +7,19 @@ import anchorFinder from "./utils/useElementFinder";
 // ? map trough them when the button clicked
 
 function App() {
-  const [href, setHref] = useState("");
-
   let allAnchorTags = [];
   useEffect(() => {
     allAnchorTags = Array.from(document.querySelectorAll("a"));
     console.log(allAnchorTags, typeof allAnchorTags);
   }, []);
 
-  const handleClick = async (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    // await new Promise((resolve) => {
-    //   for (let i = 0; i < allAnchorTags.length; i++) {
-    //     allAnchorTags[i].addEventListener("click", resolve);
-    //     allAnchorTags[i].click();
-    //   }
-    // });
-
-    // for (const anchorTag of allAnchorTags) {
-    //   const newTab = window.open(anchorTag.href, "_blank");
-    //   await new Promise((resolve) => {
-    //     newTab.addEventListener("load", resolve);
-    //   });
-    // }
-
     for (let i = 0; i < allAnchorTags.length; i++) {
-      setHref(allAnchorTags[i].href);
-      const clickedOne = document.getElementById("click");
-      clickedOne.click();
-      console.log(allAnchorTags[i].href, clickedOne);
+      allAnchorTags[i].addEventListener("click", () => {
+        console.log(allAnchorTags[i]);
+      });
+      allAnchorTags[i].click();
     }
   };
 
@@ -43,23 +27,6 @@ function App() {
 
   return (
     <>
-      {/* <a href="https://vitejs.dev" target="_blank" className="text-danger">
-        vite
-      </a>
-      <br />
-      <a
-        className="text-danger"
-        href="https://iamnotindangeriamthedanger.website?select=aHR0cHM6Ly9zdWJ0aXRsZS5ta3NlcnZlcnMuaXIvQWxtYXNFZGl0aW9uL1Nlcmllcy9UL1RlZCUyMExhc3NvL0ZhcnNpL0ZhcnNpLlMwMS5UZWQuTGFzc28vV0VCLURMJTIwJTI2JTIwV0VCUmlwL1RlZCUyMExhc3NvJTIwLSUyMFdFQiUyMC0lMjBTMDFFMDIuc3J0KlRlZC5MYXNzby5TMDFFMDIuMTA4MHAuV0VCLkRMLjZDSC5QYUhlKnNydA=="
-        ref={anchorTag}
-        title=""
-      >
-        دانلود زیرنویس قسمت 2
-      </a>
-      <br />
-      <a href="https://react.dev" target="_blank" className="text-danger">
-        react
-      </a> */}
-
       <div className="text-center my-1">
         <a
           className="display-inline-block px-3 py-1 br-5px bg1"
@@ -148,12 +115,6 @@ function App() {
           title=""
         >
           دانلود زیرنویس قسمت 10
-        </a>
-      </div>
-
-      <div>
-        <a href={href} id="click" className="text-danger">
-          the one that will change
         </a>
       </div>
 
